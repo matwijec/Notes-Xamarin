@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Notes.NoteEntryPage"
+             Title="Dodaj notatke">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Zapisz"
+                     Clicked="OnSaveButtonClicked" />
+        <ToolbarItem Text="Usun"
+                     Clicked="OnDeleteButtonClicked" />
+    </ContentPage.ToolbarItems>
+    <StackLayout Margin="20">
+        <Editor Placeholder="Nazwa"
+                Text="{Binding Name}"
+                HeightRequest="50"
+                TextColor="red"
+                TextChanged="EditorTextChanged" />
+        <Editor Placeholder="Kategoria"
+                Text="{Binding Category}"
+                HeightRequest="50" 
+                TextChanged="EditorTextChanged" />
+        <Editor x:Name="editorarea"
+                Placeholder="Wpisz tutaj notatke"
+                Text="{Binding Text}"
+                HeightRequest="300"
+                TextChanged="EditorTextChanged" />
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Text="B" FontAttributes="Bold" FontSize="Large" Grid.Column="0" Clicked="MakeBold" />
+            <Button Text="I" FontAttributes="Italic" FontSize="Large" Grid.Column="1" Clicked="MakeItalic"/>
+            <Button Text="->" FontAttributes="Italic" FontSize="Large" Grid.Column="2" Clicked="MakeIndentation"/>
+            <Button Text="*,*,*" FontAttributes="None" FontSize="Large" Grid.Column="3" Clicked="MakeUnorderedList"/>
+            <Button Text="1,2,3" FontAttributes="None" FontSize="Large" Grid.Column="4" Clicked="MakeOrderedList"/>
+ 
+        </Grid>
+    </StackLayout>
+</ContentPage>
